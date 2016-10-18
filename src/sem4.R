@@ -55,3 +55,8 @@ drop1(modfrat,.~.,test="F")
 # que l'on modélise à l'aide d'une régression logistique.
 # Donner la borne inférieure de l'intervalle de confiance à 95 % pour l'odds-ratio (3 chiffres après la virgule).
 
+a$separation
+a$age
+mod6<-glm(separation~age,a,family="binomial"("logit"))
+confint(mod6)
+exp(confint(mod6))
