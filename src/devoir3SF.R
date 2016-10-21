@@ -6,6 +6,7 @@ path<-"C:/Users/sf/Documents/git/funmooc M2MSR"
 path<-file.path(getwd()) #je stock le chemin où je me trouve dans une variable
 sat <- read.csv2(paste0(path,"/data/satisfaction_hopital.csv")) #je charge la base de données et je la nomme sat
 #ne pas oublier le / avant data
+
 #### QUESTION 1 #########
 # Estimez le modèle de régression linéaire expliquant la variable « score.relation » par les variables 
 # « age », « sexe », « score.information », « amelioration.sante », « amelioration.moral », « profession », « service ». 
@@ -47,7 +48,7 @@ drop1(mod,.~.,test="F")
 #1/Je transforme la variable recommander en variable binaire
 sat$recommander.b<-ifelse (sat$recommander==2,1,0)
 #Je vérfie que le recodage s'est bien déroulé:
-table(sat$recommander,sat$recommander.b,useNA = "always")
+table(sat$recommander,sat$recommander.b,useNA = "always",deparse.level = 2) #deparse.level=2 pour afficher les noms
 
 #1'/Attention à regarder préalablement les variables explicatives, les variables catégorielles doivent être recodées en facteur:
 sat$profession <- factor(sat$profession)
